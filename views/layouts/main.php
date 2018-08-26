@@ -1,15 +1,12 @@
 <?php
-
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -36,18 +33,47 @@ AppAsset::register($this);
         ],
     ]);
     echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-left'],
+        'items' => [
+            [
+                'label' => 'Cadastros',
+                'items' => [
+                     ['label' => 'Titulos', 'url' => ['/titulos/index']],
+                     ['label' => 'Arstistas', 'url' => ['/artistas/index']],
+                     ['label' => 'Funcionarios', 'url' => ['/funcionarios/index']],
+                     ['label' => 'Clientes', 'url' => ['/clientes/index']],
+                     ['label' => 'Usuario', 'url' => ['/usuario/index']],
+                ],
+            ],
+        ],
+    ]);
+     echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-left'],
+        'items' => [
+            [
+                'label' => 'Reserva',
+                'items' => [
+                     ['label' => 'Titulos', 'url' => ['/titulos/index']],
+                     ['label' => 'Arstistas', 'url' => ['/artistas/index']],
+                     ['label' => 'Funcionarios', 'url' => ['/funcionarios/index']],
+                     ['label' => 'Clientes', 'url' => ['/clientes/index']],
+                ],
+            ],
+        ],
+    ]);
+    echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Sobre', 'url' => ['/site/about']],
+            ['label' => 'Contato', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Logout (' . Yii::$app->user->identity->nome . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -69,9 +95,9 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Ricardo Ferraz Mazurek</p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right"><?= date('Y') ?></p>
     </div>
 </footer>
 
