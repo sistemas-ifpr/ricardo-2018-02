@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "cad_funcionarios".
+ * This is the model class for table "cad_clientes".
  *
  * @property int $id
  * @property string $nome
@@ -13,17 +13,18 @@ use Yii;
  * @property string $telefone
  * @property string $celular
  * @property string $endereco
- * @property string $data_adimicao
- * @property string $data_demicao
+ * @property string $data_nascimento
+ *
+ * @property Reserva[] $reservas
  */
-class Funcionarios extends \yii\db\ActiveRecord
+class CadClientes extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'cad_funcionarios';
+        return 'cad_clientes';
     }
 
     /**
@@ -32,8 +33,8 @@ class Funcionarios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'cpf', 'telefone', 'celular', 'endereco', 'data_adimicao'], 'required'],
-            [['data_adimicao', 'data_demicao'], 'safe'],
+            [['nome', 'cpf', 'telefone', 'celular', 'endereco', 'data_nascimento'], 'required'],
+            [['data_nascimento'], 'safe'],
             [['nome', 'endereco'], 'string', 'max' => 50],
             [['cpf', 'telefone', 'celular'], 'string', 'max' => 11],
         ];
@@ -51,8 +52,15 @@ class Funcionarios extends \yii\db\ActiveRecord
             'telefone' => 'Telefone',
             'celular' => 'Celular',
             'endereco' => 'Endereco',
-            'data_adimicao' => 'Data Adimicao',
-            'data_demicao' => 'Data Demicao',
+            'data_nascimento' => 'Data Nascimento',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReservas()
+    {
+        return $this->hasMany(Reserva::className(), ['cliente' => 'id']);
     }
 }

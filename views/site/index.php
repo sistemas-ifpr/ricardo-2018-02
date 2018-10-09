@@ -9,7 +9,7 @@ $this->title = 'My Yii Application';
     <div class="jumbotron">
         <h1>Paris Filmes</h1>
 
-        <p class="lead">Todos os grandes CDs e DVS você encontra aqui na Paris Filmes.</p>
+        <p class="lead">Todos os grandes CDs e DVDs você encontra aqui na Paris Filmes.</p>
 
         <p><a class="btn btn-lg btn-success" href="index.php?r=site/login">Acesse a Locadora de CD/DVD</a></p>
     </div>

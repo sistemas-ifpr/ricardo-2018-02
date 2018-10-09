@@ -53,10 +53,40 @@ AppAsset::register($this);
             [
                 'label' => 'Reserva',
                 'items' => [
-                     ['label' => 'Titulos', 'url' => ['/titulos/index']],
-                     ['label' => 'Arstistas', 'url' => ['/artistas/index']],
-                     ['label' => 'Funcionarios', 'url' => ['/funcionarios/index']],
-                     ['label' => 'Clientes', 'url' => ['/clientes/index']],
+                     ['label' => 'Efetuar reserva', 'url' => ['/reserva/index']],
+                ],
+            ],
+        ],
+    ]);
+     echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-left'],
+        'items' => [
+            [
+                'label' => 'Emprestimo',
+                'items' => [
+                     ['label' => 'Efetaur Emprestimo', 'url' => ['/titulos/index']],
+                ],
+            ],
+        ],
+    ]);
+     echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-left'],
+        'items' => [
+            [
+                'label' => 'Devolução',
+                'items' => [
+                     ['label' => 'Efetuar Devolução', 'url' => ['/titulos/index']],
+                ],
+            ],
+        ],
+    ]);
+     echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-left'],
+        'items' => [
+            [
+                'label' => 'Relatório',
+                'items' => [
+                     ['label' => 'Gerar Relatório', 'url' => ['/titulos/index']],
                 ],
             ],
         ],

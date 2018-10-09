@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'celular')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'endereco')->textInput() ?>
+    <?= $form->field($model, 'endereco')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'data_nascimento')->textInput() ?>
 
