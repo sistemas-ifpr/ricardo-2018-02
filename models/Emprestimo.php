@@ -12,6 +12,8 @@ use Yii;
  * @property string $data_emprestimo
  * @property int $cliente
  * @property int $funcionario_reserva
+ * @property int $ativo
+ * @property string $data_devolucao
  *
  * @property Clientes $cliente
  * @property Funcionarios $funcionarioReserva
@@ -33,9 +35,9 @@ class Emprestimo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['identificador', 'data_emprestimo', 'cliente', 'funcionario_reserva'], 'required'],
-            [['identificador', 'cliente', 'funcionario_reserva'], 'integer'],
-            [['data_emprestimo'], 'safe'],
+            [['identificador', 'data_emprestimo', 'cliente', 'funcionario_reserva', 'ativo'], 'required'],
+            [['identificador', 'cliente', 'funcionario_reserva', 'ativo'], 'integer'],
+            [['data_emprestimo', 'data_devolucao'], 'safe'],
             [['cliente'], 'exist', 'skipOnError' => true, 'targetClass' => Clientes::className(), 'targetAttribute' => ['cliente' => 'id']],
             [['funcionario_reserva'], 'exist', 'skipOnError' => true, 'targetClass' => Funcionarios::className(), 'targetAttribute' => ['funcionario_reserva' => 'id']],
             [['identificador'], 'exist', 'skipOnError' => true, 'targetClass' => Titulos::className(), 'targetAttribute' => ['identificador' => 'id']],
@@ -53,6 +55,8 @@ class Emprestimo extends \yii\db\ActiveRecord
             'data_emprestimo' => 'Data Emprestimo',
             'cliente' => 'Cliente',
             'funcionario_reserva' => 'Funcionario Reserva',
+            'ativo' => 'Ativo',
+            'data_devolucao' => 'Data Devolucao',
         ];
     }
 

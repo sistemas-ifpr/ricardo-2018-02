@@ -64,18 +64,7 @@ AppAsset::register($this);
             [
                 'label' => 'Emprestimo',
                 'items' => [
-                     ['label' => 'Efetaur Emprestimo', 'url' => ['/titulos/index']],
-                ],
-            ],
-        ],
-    ]);
-     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-left'],
-        'items' => [
-            [
-                'label' => 'Devolução',
-                'items' => [
-                     ['label' => 'Efetuar Devolução', 'url' => ['/titulos/index']],
+                     ['label' => 'Efetaur Emprestimo', 'url' => ['/emprestimo/index']],
                 ],
             ],
         ],

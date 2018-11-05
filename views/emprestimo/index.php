@@ -27,6 +27,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'data_emprestimo',
             'cliente',
             'funcionario_reserva',
+            //'ativo',
+             ['attribute'=>'ativo',
+                //'label'=> 'Ativo',
+                'value' => function ($model) {
+                    return ($model->ativo == 0)? 'Não' : 'Sim';
+                }
+            ],
+
+            'data_devolucao',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
