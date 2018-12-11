@@ -13,8 +13,12 @@ use Yii;
  * @property int $descricao
  * @property string $ano_lancamento
  * @property string $foto
+ * @property string $tipo
+ *
+ * @property Emprestimo[] $emprestimos
+ * @property Reserva[] $reservas
  */
-class Titulos extends \yii\db\ActiveRecord
+class CadTitulos extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -30,11 +34,12 @@ class Titulos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['titulo', 'artista', 'descricao', 'ano_lancamento'], 'required'],
+            [['titulo', 'artista', 'descricao', 'ano_lancamento', 'foto', 'tipo'], 'required'],
             [['descricao'], 'integer'],
             [['ano_lancamento'], 'safe'],
+            [['tipo'], 'string'],
             [['titulo', 'artista'], 'string', 'max' => 50],
-            [['foto'], 'string', 'max' => 100],
+            [['foto'], 'string', 'max' => 200],
         ];
     }
 
@@ -49,7 +54,25 @@ class Titulos extends \yii\db\ActiveRecord
             'artista' => 'Artista',
             'descricao' => 'Descricao',
             'ano_lancamento' => 'Ano Lancamento',
-             'foto' => 'Foto',
+            'tipo' => 'Tipo',
+            'foto' => 'Foto',
+            
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEmprestimos()
+    {
+        return $this->hasMany(Emprestimo::className(), ['identificador' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReservas()
+    {
+        return $this->hasMany(Reserva::className(), ['identificador' => 'id']);
     }
 }

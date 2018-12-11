@@ -3,14 +3,15 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Titulos;
+use app\models\CadTitulos;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
- * TitulosController implements the CRUD actions for Titulos model.
+ * TitulosController implements the CRUD actions for CadTitulos model.
  */
 class TitulosController extends Controller
 {
@@ -30,13 +31,13 @@ class TitulosController extends Controller
     }
 
     /**
-     * Lists all Titulos models.
+     * Lists all CadTitulos models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Titulos::find(),
+            'query' => CadTitulos::find(),
         ]);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class TitulosController extends Controller
     }
 
     /**
-     * Displays a single Titulos model.
+     * Displays a single CadTitulos model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,17 +59,23 @@ class TitulosController extends Controller
     }
 
     /**
-     * Creates a new Titulos model.
+     * Creates a new CadTitulos model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Titulos();
+        $model = new CadTitulos();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+         if ($model->load(Yii::$app->request->post())) {
+            $model->save();
+            $foto = UploadedFile::getInstance($model, 'foto');
+            $imgName = 'foto_'. $model->id . '.' . $foto->getExtension();
+            $foto->saveAs(Yii::getAlias('@CadTitulosFotoPath') .'\\' .$imgName);
+            $model->foto = $imgName;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
-        }
+        } 
 
         return $this->render('create', [
             'model' => $model,
@@ -76,7 +83,7 @@ class TitulosController extends Controller
     }
 
     /**
-     * Updates an existing Titulos model.
+     * Updates an existing CadTitulos model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +103,7 @@ class TitulosController extends Controller
     }
 
     /**
-     * Deletes an existing Titulos model.
+     * Deletes an existing CadTitulos model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +117,15 @@ class TitulosController extends Controller
     }
 
     /**
-     * Finds the Titulos model based on its primary key value.
+     * Finds the CadTitulos model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Titulos the loaded model
+     * @return CadTitulos the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Titulos::findOne($id)) !== null) {
+        if (($model = CadTitulos::findOne($id)) !== null) {
             return $model;
         }
 

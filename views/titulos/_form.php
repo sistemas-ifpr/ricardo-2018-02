@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Titulos */
+/* @var $model app\models\CadTitulos */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="titulos-form">
+<div class="cad-titulos-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -19,6 +19,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'descricao')->textInput() ?>
 
     <?= $form->field($model, 'ano_lancamento')->textInput() ?>
+
+    <?= $form->field($model, 'tipo')->textInput(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'foto')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
