@@ -6,4 +6,4 @@ Yii::setAlias('@CadTitulosFotoUrl', 'http://localhost/ricardo-2018-02/fotos/titu
 return [
     'adminEmail' => 'admin@example.com',
 ];
-  
+   

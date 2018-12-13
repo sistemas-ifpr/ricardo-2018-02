@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'endereco')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'data_nascimento')->textInput() ?>
+    <?= $form->field($model, 'data_nascimento')->input('date', []) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

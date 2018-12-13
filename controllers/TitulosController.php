@@ -45,12 +45,6 @@ class TitulosController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single CadTitulos model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -70,7 +64,7 @@ class TitulosController extends Controller
          if ($model->load(Yii::$app->request->post())) {
             $model->save();
             $foto = UploadedFile::getInstance($model, 'foto');
-            $imgName = 'foto_'. $model->id . '.' . $foto->getExtension();
+            $imgName = 'fotos_'. $model->id . '.' . $foto->getExtension();
             $foto->saveAs(Yii::getAlias('@CadTitulosFotoPath') .'\\' .$imgName);
             $model->foto = $imgName;
             $model->save();

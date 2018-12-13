@@ -35,7 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'ano_lancamento',
             
             'tipo:ntext',
-            'foto',
+
+            [
+                'attribute'=>'foto',
+                'value'=> Yii::getAlias('@CadTitulosFotoUrl') . '/' . $model->foto,
+                'format'=>['image',['width'=>'100','height'=>'100']]
+            ]
         ],
     ]) ?>
 

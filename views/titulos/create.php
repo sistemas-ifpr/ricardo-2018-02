@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CadTitulos */
 
-$this->title = 'Create Cad Titulos';
+$this->title = 'Criar Cadastro de Titulos';
 $this->params['breadcrumbs'][] = ['label' => 'Cad Titulos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

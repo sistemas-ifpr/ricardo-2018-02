@@ -14,7 +14,6 @@ use Yii;
  * @property string $ano_lancamento
  * @property string $foto
  * @property string $tipo
- *
  * @property Emprestimo[] $emprestimos
  * @property Reserva[] $reservas
  */

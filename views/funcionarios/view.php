@@ -34,8 +34,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'telefone',
             'celular',
             'endereco',
-            'data_adimicao',
-            'data_demicao',
+            [
+                'attribute'=>'data_adimicao',
+                'format'=>['DateTime','php:d/m/Y']
+            ],
+
+            [
+                'attribute'=>'data_demicao',
+                'format'=>['DateTime','php:d/m/Y']
+            ],
+
         ],
     ]) ?>
 

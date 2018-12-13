@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Funcionarios', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Funcionarios', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,6 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'celular',
             //'endereco',
             //'data_adimicao',
+            [
+                'attribute'=>'data_adimicao',
+                'format'=>['DateTime','php:d/m/Y']
+            ],
             //'data_demicao',
 
             ['class' => 'yii\grid\ActionColumn'],

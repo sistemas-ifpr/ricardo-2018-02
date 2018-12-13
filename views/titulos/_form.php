@@ -18,15 +18,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descricao')->textInput() ?>
 
-    <?= $form->field($model, 'ano_lancamento')->textInput() ?>
+    <?= $form->field($model, 'ano_lancamento')->input('date', ["y"]) ?>
 
-    <?= $form->field($model, 'tipo')->textInput(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'tipo')->dropDownList(['CD' => 'CD', 'DVD' => 'DVD']) ?>
+
 
     <?= $form->field($model, 'foto')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
+
 
     <?php ActiveForm::end(); ?>
 

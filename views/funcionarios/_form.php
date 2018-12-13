@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Funcionarios */
 /* @var $form yii\widgets\ActiveForm */
-?>
+?> 
 
 <div class="funcionarios-form">
 
@@ -22,9 +22,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'endereco')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'data_adimicao')->textInput() ?>
+    <?= $form->field($model, 'data_adimicao')->input('date', []) ?>
 
-    <?= $form->field($model, 'data_demicao')->textInput() ?>
+    <?= $form->field($model, 'data_demicao')->input('date', []) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
